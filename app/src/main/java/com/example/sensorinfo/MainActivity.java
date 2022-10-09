@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onSensorChanged(SensorEvent event) {
         if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
-
+            // TODO :- create a object of database( for accelerometer ) class and store data into it
         }
 
     }
