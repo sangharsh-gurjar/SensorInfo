@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         acc =findViewById(R.id.toggleButton1);
 
-        acc_enabled = acc.isEnabled();
+        acc_enabled=false;
         final CompoundButton.OnCheckedChangeListener toggleButtonChangeListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
