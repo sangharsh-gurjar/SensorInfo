@@ -1,3 +1,4 @@
+package com.example.sensorinfo;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
