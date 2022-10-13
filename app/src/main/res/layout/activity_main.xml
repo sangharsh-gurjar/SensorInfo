@@ -57,7 +57,7 @@
                     android:textSize="20dp"
 
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="Proximity" />
 
                 <ToggleButton
                     android:id="@+id/toggleButton2"
@@ -70,24 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-
-                android:layout_weight="1"
-                android:text="TextView" />
-
-            <ToggleButton
-                android:id="@+id/toggleButton3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="ToggleButton" />
-        </LinearLayout>
+            android:layout_weight="1"/>
         </LinearLayout>
 
         <LinearLayout
@@ -108,7 +91,7 @@
                     android:textSize="20dp"
 
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="Gyroscope" />
 
                 <ToggleButton
                     android:id="@+id/toggleButton4"
@@ -143,24 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-
-                android:layout_weight="1"
-                android:text="TextView" />
-
-            <ToggleButton
-                android:id="@+id/toggleButton6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="ToggleButton" />
-        </LinearLayout>
+            android:layout_weight="1"/>
         </LinearLayout>
 
     </LinearLayout>

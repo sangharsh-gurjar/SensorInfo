@@ -4,14 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".DisplayData">
 
     <TextView
-        android:id="@+id/display_data"
+        android:id="@+id/display_data_acc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:layout_weight="1"
         android:textSize="30sp"
         android:text="Accelerometer info" />
+
+    <TextView
+        android:id="@+id/display_data_gyro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:textSize="30sp"
+        android:text="Gyro info" />
+
+    <TextView
+        android:id="@+id/display_data_prox"
+        android:layout_width="match_parent"
+        android:textSize="30sp"
+        android:layout_marginTop="60dp"
+        android:layout_height="wrap_content"
+        android:text="Proximity info" />
 </LinearLayout>
