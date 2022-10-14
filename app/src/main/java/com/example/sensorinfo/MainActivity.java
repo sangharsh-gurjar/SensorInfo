@@ -22,9 +22,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     ToggleButton acc;
     ToggleButton gyro;
     ToggleButton prox;
+    ToggleButton temp;
     boolean acc_enabled =false;
     boolean gyro_enabled =false;
     boolean prox_enabled= false;
+    boolean temp_enabled=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +36,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         acc =findViewById(R.id.toggleButton1);
         gyro=findViewById(R.id.toggleButton4);
         prox=findViewById(R.id.toggleButton2);
+        temp =findViewById(R.id.toggleButton5);
 
         acc_enabled=false;
         prox_enabled=false;
         gyro_enabled=false;
+        temp_enabled=false;
 
         // on checklistener for acceleromter
         final CompoundButton.OnCheckedChangeListener toggleButtonChangeListener = new CompoundButton.OnCheckedChangeListener() {
@@ -84,6 +88,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         };
         prox.setOnCheckedChangeListener(toggleButtonChangeListener_prox);
 
+        // on check listener for temperature sensor
+        final CompoundButton.OnCheckedChangeListener toggleButtonChangeListener_temp = new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // The user changed the button, do something
+                if (isChecked) {
+                    temp_enabled=true;
+                }
+                else{
+                    temp_enabled=false;
+                }
+            }
+        };
+        temp.setOnCheckedChangeListener(toggleButtonChangeListener_temp);
+
+
 
 
 
@@ -111,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             Sensor acceleroSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             Sensor gyroSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
             Sensor proxSensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+            Sensor tempSensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
 
             if(acceleroSensor!=null){
                 sensorManager.registerListener(this,acceleroSensor,SensorManager.SENSOR_DELAY_NORMAL);
@@ -120,6 +141,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
             if(proxSensor!=null){
                 sensorManager.registerListener(this,proxSensor,SensorManager.SENSOR_DELAY_NORMAL);
+            }
+            if(tempSensor!=null){
+                sensorManager.registerListener(this,tempSensor,SensorManager.SENSOR_DELAY_NORMAL);
             }
         }
         else{
@@ -181,6 +205,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
             else{
                 proximityDAO.insert(new ProximityDB(3,event.values[0]));
+
+            }
+
+        }
+        // for temp sensor
+        if(event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE && temp_enabled){
+            TempDatabase tempDatabase =Room.databaseBuilder(getApplicationContext(),
+                    TempDatabase.class,"temp - Database").allowMainThreadQueries().build();
+            TempDAO tempDAO=tempDatabase.tempDAO();
+            boolean exist = tempDAO.is_exist(4);
+            if(exist){
+                tempDAO.update(new TempDB(4,(int)event.values[0]));
+                data_hai=true;
+            }
+            else{
+                tempDAO.insert(new TempDB(4,(int)event.values[0]));
 
             }
 

@@ -11,7 +11,7 @@
         android:id="@+id/display_data_acc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:textSize="30sp"
         android:text="Accelerometer info" />
 
@@ -19,7 +19,7 @@
         android:id="@+id/display_data_gyro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:textSize="30sp"
         android:text="Gyro info" />
 
@@ -27,7 +27,16 @@
         android:id="@+id/display_data_prox"
         android:layout_width="match_parent"
         android:textSize="30sp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
         android:text="Proximity info" />
+
+    <TextView
+        android:id="@+id/display_data_temp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Temperature info "
+        android:textSize="30sp"
+        />
 </LinearLayout>

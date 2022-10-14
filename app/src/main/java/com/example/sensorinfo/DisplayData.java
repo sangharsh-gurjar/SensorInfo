@@ -12,6 +12,8 @@ public class DisplayData extends AppCompatActivity {
     TextView display_data_acc;
     TextView display_data_gyro;
     TextView display_data_prox;
+    TextView display_data_temp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,16 @@ public class DisplayData extends AppCompatActivity {
         }
         else{
             Toast.makeText(this,"no - proximity info",Toast.LENGTH_SHORT).show();
+        }
+
+        TempDatabase tempDatabase =Room.databaseBuilder(getApplicationContext(),
+                TempDatabase.class,"temp - Database").allowMainThreadQueries().build();
+        TempDAO tempDAO=tempDatabase.tempDAO();
+        if(tempDAO.is_exist(4)){
+            TempDB tempDB=tempDAO.loadById(4);
+            display_data_temp=findViewById(R.id.display_data_temp);
+            display_data_prox.setText("temperature - "+tempDB.temp);
+
         }
 
 
